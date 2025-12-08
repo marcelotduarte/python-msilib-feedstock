@@ -11,10 +11,12 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name|replace("-", "_") }}-${{ version }}.tar.gz
   sha256: 5d9d0c2af2cafbc50d484cce4cfab1cb8cfd65d705d7111d216bc525a059113b
+  patches:
+    - py310.patch
 
 build:
   number: 0
-  script: python -m pip install . -vv --no-deps --no-build-isolation --ignore-requires-python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
   skip: not win
 
 requirements:
