@@ -1,0 +1,47 @@
+diff --git a/README.md b/README.md
+index 40684d8..b64f20b 100644
+--- a/README.md
++++ b/README.md
+@@ -3,7 +3,7 @@
+ Read and write Microsoft Installer files.
+ 
+ This library is legacy code borrowed from Python 3.12, intended to allow
+-cx_Freeze's `bdist_msi` command to continue working in Python 3.13 and 3.14.
++cx_Freeze's `bdist_msi` command to continue working in Python 3.13+.
+ 
+ [![PyPI version](https://img.shields.io/pypi/v/python-msilib)](https://pypi.org/project/python-msilib/)
+ [![PyPi Downloads](https://img.shields.io/pypi/dm/python-msilib)](https://pypistats.org/packages/python-msilib)
+diff --git a/pyproject.toml b/pyproject.toml
+index 55b08a6..7e2e6b6 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,7 +31,7 @@ keywords = ["msilib"]
+ license = "PSF-2.0"
+ license-files = ["LICENSE"]
+ readme = "README.md"
+-requires-python = ">=3.13"
++requires-python = ">=3.10"
+ 
+ [[project.authors]]
+ name = "Marcelo Duarte"
+diff --git a/src/msilib/include/_msi.h b/src/msilib/include/_msi.h
+index 0b6bdf7..d3d1300 100644
+--- a/src/msilib/include/_msi.h
++++ b/src/msilib/include/_msi.h
+@@ -2,9 +2,15 @@
+ preserve
+ [clinic start generated code]*/
+ 
+-// Add _PyArg_NoPositional and _PyArg_BadArgument
++// Add _PyArg_NoPositional and _PyArg_BadArgument IN Python 3.13.0b2+
+ #define Py_BUILD_CORE
++#if PY_VERSION_HEX >= 0x030D00B2
+ #include <internal/pycore_modsupport.h>
++#endif
++
++#ifndef _PyCFunction_CAST
++#define _PyCFunction_CAST(func) ((PyCFunctionObject *)func)
++#endif
+ 
+ #define _MSI_SENTINEL { NULL, NULL }
+ 
