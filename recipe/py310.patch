@@ -25,10 +25,10 @@ index 55b08a6..7e2e6b6 100644
  [[project.authors]]
  name = "Marcelo Duarte"
 diff --git a/src/msilib/include/_msi.h b/src/msilib/include/_msi.h
-index 0b6bdf7..d337717 100644
+index 0b6bdf7..d3d1300 100644
 --- a/src/msilib/include/_msi.h
 +++ b/src/msilib/include/_msi.h
-@@ -2,9 +2,11 @@
+@@ -2,9 +2,15 @@
  preserve
  [clinic start generated code]*/
  
@@ -37,6 +37,10 @@ index 0b6bdf7..d337717 100644
  #define Py_BUILD_CORE
 +#if PY_VERSION_HEX >= 0x030D00B2
  #include <internal/pycore_modsupport.h>
++#endif
++
++#ifndef _PyCFunction_CAST
++#define _PyCFunction_CAST(func) ((PyCFunctionObject *)func)
 +#endif
  
  #define _MSI_SENTINEL { NULL, NULL }
