@@ -15,7 +15,7 @@ source:
     - py310.patch
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install . -vv --no-deps --no-build-isolation
   skip: not win
 
