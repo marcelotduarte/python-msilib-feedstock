@@ -12,7 +12,7 @@ Summary: Read and write Microsoft Installer files.
 Documentation: https://docs.python.org/3.12/library/msilib.html
 
 This library is legacy code borrowed from Python 3.12, intended to allow
-cx_Freeze's bdist_msi command to continue working in Python 3.13+. 
+cx_Freeze's bdist_msi command to continue working in Python 3.13+.
 
 Current build status
 ====================
